@@ -39,10 +39,18 @@ for i in range(SAMPLE_SIZE):
         result.append(0)
 
 result = np.asarray(result)
-ocurrences = np.unique_counts(result)
-print(f"La fraccion teorica de exitos deberia ser {2/9}")
-print(f"La fraccion de exitos del total es {ocurrences[1][1]/SAMPLE_SIZE}")
 plt.hist(result)
+plt.title('Histograma realizado con muestras aleatorias')
+plt.xlabel('Valor de X')
+plt.ylabel('Cantidad de ocurrencias')
+plt.show()
+theoretical_number_wins = int((2 / 9) * SAMPLE_SIZE)
+theoretical_number_losses = SAMPLE_SIZE - theoretical_number_wins
+theoretical = np.concatenate((np.full(theoretical_number_wins, 1), np.full(theoretical_number_losses, 0)), axis=0)
+plt.hist(theoretical, color='red')
+plt.title('Histograma teorico')
+plt.xlabel('Valor de X')
+plt.ylabel('Cantidad de ocurrencias')
 plt.show()
 
 # c
@@ -52,16 +60,29 @@ plt.show()
 # d
 THROWS = 20
 result = []
+theoretical_results = []
 for i in range(SAMPLE_SIZE):
     number_wins = 0
     U1 = np.random.uniform(0, 1, THROWS)
     U2 = np.random.uniform(0, 1, THROWS)
+    binomial_results = np.random.binomial(THROWS, 2 / 9)
     for j in range(THROWS):
         throw_1 = get_dice_number(U1[j])
         throw_2 = get_dice_number(U2[j])
         if throw_1 + throw_2 == 7 or throw_1 + throw_2 == 11:
             number_wins += 1
     result.append(number_wins)
+    theoretical_results.append(binomial_results)
+
 result = np.asarray(result)
+theoretical_results = np.asarray(theoretical_results)
 plt.hist(result)
+plt.title('Histograma realizado con muestras aleatorias')
+plt.xlabel('Valor de Y')
+plt.ylabel('Cantidad de ocurrencias')
+plt.show()
+plt.hist(theoretical_results, color='red')
+plt.title('Histograma teorico')
+plt.xlabel('Valor de Y')
+plt.ylabel('Cantidad de ocurrencias')
 plt.show()
