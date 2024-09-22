@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 SAMPLE_SIZE = 10000
 
 def get_dice_number(value):
+    """Devuelve valor de tirada de dado a partir de un numero en intervalo (0,1)"""
     if value < 1/6:
         return 1
     elif 1/6 <= value < 2/6:

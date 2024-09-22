@@ -59,7 +59,7 @@ for size in SAMPLE_SIZES:
     mse_estimation = total_sum / M
     result_list.append(mse_estimation)
     print(f"La estimacion para {size} muestras resulta ")
-    print(mse_estimation)
+    print(estimation)
 
 mse = np.asarray(result_list)
 plt.plot(SAMPLE_SIZES, mse, 'rs')

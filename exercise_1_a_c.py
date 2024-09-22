@@ -38,7 +38,6 @@ plt.show()
 
 coef_pearson = np.corrcoef(Z1, Z2)[0, 1]  # El [0,1] extrae el valor de la correlación
 print(f"Coeficiente de correlación de Pearson: {coef_pearson}")
-#print(np.corrcoef(Z1,Z2))
 
 def x1_transformation_function(x):
     return np.sqrt(2) * x
