@@ -60,6 +60,8 @@ for size in SAMPLE_SIZES:
     result_list.append(mse_estimation)
     print(f"La estimacion para {size} muestras resulta ")
     print(estimation)
+    print(f"El error para {size} muestras resulta ")
+    print(mse_estimation)
 
 mse = np.asarray(result_list)
 plt.plot(SAMPLE_SIZES, mse, 'rs')
