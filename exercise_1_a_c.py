@@ -24,14 +24,21 @@ print(f"La media estimada para Z2 es {np.mean(Z2)}")
 print(f"La varianza estimada para Z2 es {np.var(Z2)}")
 
 plt.hist(Z1, bins = BINS)
+plt.title('Histograma de Z1')
 plt.show()
 plt.hist(Z2, bins = BINS, color='orange')
+plt.title('Histograma de Z2')
 plt.show()
 
 plt.scatter(Z1, Z2, color = 'green')
+plt.title('Gráfico de dispersión de Z2 vs Z1')
+plt.xlabel('Z1')
+plt.ylabel('Z2')
 plt.show()
 
-print(np.corrcoef(Z1,Z2))
+coef_pearson = np.corrcoef(Z1, Z2)[0, 1]  # El [0,1] extrae el valor de la correlación
+print(f"Coeficiente de correlación de Pearson: {coef_pearson}")
+#print(np.corrcoef(Z1,Z2))
 
 def x1_transformation_function(x):
     return np.sqrt(2) * x
@@ -60,13 +67,16 @@ print(f"La varianza teorica para X2 es 2 y la estimada es {np.var(X2)}")
 print(f"La media teorica para X3 es 1 y la estimada es {np.mean(X3)}")
 print(f"La varianza teorica para X3 es 4 y la estimada es {np.var(X3)}")
 
-def compare_hist_pdf(values, mu, variance):
+def compare_hist_pdf(values, mu, variance, i):
     plt.hist(values, bins=50, density=True)
     sigma = np.sqrt(variance)
     x = np.linspace(mu - 5 * sigma, mu + 5 * sigma, SAMPLE_SIZE)
     plt.plot(x, stats.norm.pdf(x, mu, sigma), color='r')
+    plt.title(f'Histograma y densidad de probabilidad teóricas X{i}')
+    labels = ['Densidad de probabilidad','Histograma']
+    plt.legend(labels)
     plt.show()
 
-compare_hist_pdf(X1, 0, 2)
-compare_hist_pdf(X2, 1, 2)
-compare_hist_pdf(X3, 1, 4)
+compare_hist_pdf(X1, 0, 2, 1)
+compare_hist_pdf(X2, 1, 2, 2)
+compare_hist_pdf(X3, 1, 4, 3)

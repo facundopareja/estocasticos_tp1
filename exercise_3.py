@@ -1,14 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# a
-# Dos formas de obtener 11 = 5 + 6 = 6 + 5
-# Varias formas de obtener 7 = 1 + 6 = 2 + 5 = 3 + 4 = 4 + 3 = 5 + 2 = 6 + 1
-# Asumiendo dados indpendientes, cada caso tiene chance 1/36 de suceder
-# Luego, la probabilidad de ganar un lanzamiento es = 8/36 = 2/9
-# La probabilidad que modela esto es Bernoulli con parametro 2/9.
-
-# b
+#b
 SAMPLE_SIZE = 10000
 
 def get_dice_number(value):
@@ -53,11 +46,7 @@ plt.xlabel('Valor de X')
 plt.ylabel('Cantidad de ocurrencias')
 plt.show()
 
-# c
-# Para determinar la cantidad de exitos en n e experimentos Bernoulli
-# se utiliza una distribucion Binomial (n, 2/9)
-
-# d
+#d
 THROWS = 20
 result = []
 theoretical_results = []
